@@ -1,0 +1,1245 @@
+/* Ella UI Kit — Website
+   All component-level styling lives here so JSX files stay clean.
+   Tokens are imported from ../../colors_and_type.css. */
+
+@import url('../../colors_and_type.css');
+
+/* ---------- Reset-ish ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { background: var(--bg-canvas); color: var(--fg-primary); }
+
+img { max-width: 100%; display: block; }
+button { font: inherit; cursor: pointer; }
+
+/* ---------- Layout primitives ---------- */
+.ella-container {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--space-10);
+}
+@media (min-width: 1024px) {
+  .ella-container { padding: 0 var(--space-20); }
+}
+
+.ella-section { padding: 64px 0; }
+.ella-section-tight { padding: 44px 0; }
+@media (max-width: 800px) {
+  .ella-section { padding: 44px 0; }
+  .ella-section-tight { padding: 32px 0; }
+}
+
+.ella-bg-cream { background: var(--ella-cream-100); }
+.ella-bg-blush { background: var(--ella-blush-50); }
+
+/* ---------- Header ---------- */
+.ella-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--ella-cream-50) 88%, transparent);
+  backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 200ms var(--ease-out);
+}
+.ella-header.is-scrolled { border-bottom-color: var(--border-default); }
+.ella-header-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--space-10);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+@media (min-width: 1024px) { .ella-header-inner { padding: 0 var(--space-20); } }
+
+.ella-logo {
+  display: inline-flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.ella-logo-word {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 1;
+  color: var(--ella-clay-900);
+  letter-spacing: -0.01em;
+}
+.ella-header-book {
+  padding: 9px 18px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+@media (max-width: 600px) { .ella-header-book { display: none; } }
+.ella-nav {
+  display: none;
+  flex: 1;
+  gap: var(--space-6);
+  margin-left: var(--space-8);
+  overflow: hidden;
+}
+@media (min-width: 900px) { .ella-nav { display: inline-flex; } }
+.ella-navlink {
+  color: var(--ella-clay-700);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 6px 2px;
+  position: relative;
+  white-space: nowrap;
+  transition: color 150ms var(--ease-out);
+}
+.ella-navlink:hover { color: var(--ella-rose-deep); }
+.ella-navlink.is-active { color: var(--ella-rose-deep); }
+.ella-navlink.is-active::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -6px;
+  height: 2px; background: var(--ella-rose);
+  border-radius: 2px;
+}
+
+.ella-header-end {
+  margin-left: auto;
+  display: inline-flex; align-items: center; gap: var(--space-4);
+}
+.ella-navlink-end { display: none; }
+@media (min-width: 1100px) { .ella-navlink-end { display: inline-flex; } }
+.ella-iconbtn {
+  width: 40px; height: 40px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 999px; border: 0;
+  background: transparent;
+  color: var(--ella-clay-700);
+  transition: background 150ms var(--ease-out), color 150ms var(--ease-out);
+}
+.ella-iconbtn:hover { background: var(--ella-sand-100); color: var(--ella-clay-900); }
+
+/* ---------- Language toggle ---------- */
+.ella-langtoggle {
+  display: inline-flex;
+  padding: 3px;
+  background: var(--ella-cream-100);
+  border: 1px solid var(--border-default);
+  border-radius: 999px;
+  gap: 2px;
+}
+.ella-langtoggle button {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 0;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ella-taupe-500);
+  letter-spacing: 0.04em;
+  transition: all 150ms var(--ease-out);
+}
+.ella-langtoggle button.is-active {
+  background: var(--ella-cream-50);
+  color: var(--ella-clay-900);
+  box-shadow: var(--shadow-soft);
+}
+.ella-langtoggle button:hover:not(.is-active) { color: var(--ella-clay-700); }
+
+/* ---------- Buttons ---------- */
+.ella-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  padding: 14px 24px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ella-clay-900);
+  text-decoration: none;
+  transition: background 180ms var(--ease-out), color 180ms var(--ease-out), border-color 180ms var(--ease-out), box-shadow 180ms var(--ease-out), transform 80ms var(--ease-out);
+}
+.ella-btn:active { transform: translateY(1px); }
+.ella-btn-primary { background: var(--ella-rose); color: var(--ella-cream-50); }
+.ella-btn-primary:hover { background: var(--ella-rose-deep); }
+.ella-btn-secondary { background: var(--ella-cream-50); color: var(--ella-clay-900); border-color: var(--border-strong); }
+.ella-btn-secondary:hover { background: var(--ella-sand-100); }
+.ella-btn-text { padding: 10px 4px; color: var(--ella-rose-deep); }
+.ella-btn-text:hover { color: var(--ella-terracotta); text-decoration: underline; text-underline-offset: 4px; }
+.ella-btn-lg { padding: 18px 32px; font-size: 18px; }
+
+/* ---------- Eyebrow ---------- */
+.ella-eyebrow {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ella-rose-deep);
+}
+
+/* ---------- Hero ---------- */
+.ella-hero {
+  padding: 40px 0 0;
+  position: relative;
+  background: var(--ella-cream-50);
+}
+.ella-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .ella-hero-grid { grid-template-columns: 1.05fr 1fr; gap: 80px; }
+}
+.ella-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 6.4vw, 84px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--ella-clay-900);
+  margin: 14px 0 18px;
+  text-wrap: balance;
+}
+.ella-hero h1 em {
+  font-style: italic;
+  color: var(--ella-rose-deep);
+}
+.ella-hero p { font-size: 20px; line-height: 1.6; max-width: 56ch; color: var(--ella-clay-700); margin: 0 0 28px; }
+.ella-hero-cta { display: inline-flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.ella-hero-cred {
+  display: inline-flex; gap: 12px; align-items: center;
+  margin-top: 32px;
+  padding: 12px 18px 12px 12px;
+  background: var(--ella-cream-100);
+  border-radius: 999px;
+  font-size: 14px;
+  color: var(--ella-clay-700);
+}
+.ella-hero-cred-avatar { width: 36px; height: 36px; border-radius: 999px; background: linear-gradient(135deg, #c87f6e, #8a4a3a); }
+.ella-hero-photo {
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+}
+.ella-hero-ornament {
+  position: absolute;
+  pointer-events: none;
+  color: var(--ella-rose-300);
+  opacity: 0.7;
+}
+.ella-hero-ornament.tl { top: -16px; left: -24px; width: 120px; }
+.ella-hero-ornament.br { bottom: 24px; right: -36px; width: 160px; color: var(--ella-sage-300); }
+
+/* ---------- Awareness banner ---------- */
+.ella-awareness {
+  background: var(--ella-blush-50);
+  border-radius: 24px;
+  padding: 56px 48px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+@media (min-width: 900px) { .ella-awareness { grid-template-columns: 1.3fr 1fr; padding: 72px 64px; } }
+.ella-awareness h2 {
+  font-family: var(--font-display); font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.1; letter-spacing: -0.02em; margin: 10px 0 14px;
+  color: var(--ella-clay-900); text-wrap: balance;
+}
+.ella-awareness p { font-size: 18px; line-height: 1.6; color: var(--ella-clay-700); margin: 0 0 24px; max-width: 52ch; }
+.ella-awareness-quiz-preview {
+  background: var(--ella-cream-50);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+}
+.ella-awareness-q { font-family: var(--font-display); font-size: 22px; line-height: 1.3; color: var(--ella-clay-900); margin: 0 0 14px; }
+.ella-awareness-opts { display: flex; flex-direction: column; gap: 8px; }
+.ella-awareness-opt {
+  text-align: left;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--ella-cream-50);
+  border: 1px solid var(--border-default);
+  color: var(--ella-clay-900);
+  font-size: 15px;
+  transition: background 150ms, border-color 150ms;
+}
+.ella-awareness-opt:hover { background: var(--ella-blush-50); border-color: var(--ella-rose-300); }
+
+/* ---------- Section headers ---------- */
+.ella-section-head { max-width: 720px; margin-bottom: 32px; }
+.ella-section-head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4.4vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--ella-clay-900);
+  margin: 14px 0 0;
+  text-wrap: balance;
+}
+
+/* ---------- Pillar cards ---------- */
+.ella-pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.ella-pillar-card {
+  background: var(--ella-white);
+  border: 1px solid var(--border-default);
+  border-radius: 20px;
+  padding: 28px 28px 32px;
+  display: flex; flex-direction: column; gap: 14px;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 220ms var(--ease-out), transform 220ms var(--ease-out), border-color 220ms var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+.ella-pillar-card::before {
+  content: '';
+  position: absolute;
+  top: -20px; right: -20px;
+  width: 120px; height: 120px;
+  border-radius: 999px;
+  background: var(--ella-blush-50);
+  z-index: 0;
+  transition: transform 320ms var(--ease-out);
+}
+.ella-pillar-card:hover { box-shadow: var(--shadow-lifted); border-color: var(--ella-sand-300); }
+.ella-pillar-card:hover::before { transform: scale(1.4); }
+.ella-pillar-card > * { position: relative; }
+.ella-pillar-icon {
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--ella-rose);
+  background: var(--ella-cream-50);
+  border: 1px solid var(--border-muted);
+}
+.ella-pillar-card[data-tone="sage"] .ella-pillar-icon { color: var(--ella-sage-500); }
+.ella-pillar-card[data-tone="plum"] .ella-pillar-icon { color: var(--ella-plum-500); }
+.ella-pillar-card[data-tone="sage"]::before { background: var(--ella-sage-100); }
+.ella-pillar-card[data-tone="plum"]::before { background: var(--ella-plum-100); }
+.ella-pillar-card h3 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--ella-clay-900);
+  margin: 0;
+}
+.ella-pillar-card p { margin: 0; color: var(--ella-clay-700); font-size: 16px; line-height: 1.55; }
+.ella-pillar-cta {
+  margin-top: auto;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-weight: 600; font-size: 15px; color: var(--ella-rose-deep);
+}
+
+/* ---------- Doctor block ---------- */
+.ella-doctor {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+  background: var(--ella-clay-900);
+  color: var(--ella-cream-50);
+  border-radius: 28px;
+  padding: 56px 48px;
+  position: relative;
+  overflow: hidden;
+}
+@media (min-width: 900px) { .ella-doctor { grid-template-columns: 1.1fr 1fr; padding: 72px 64px; } }
+.ella-doctor h2 {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.1; letter-spacing: -0.025em;
+  margin: 12px 0 14px;
+  color: var(--ella-cream-50);
+  text-wrap: balance;
+}
+.ella-doctor p { font-size: 18px; line-height: 1.6; color: var(--ella-sand-200); margin: 0 0 28px; max-width: 52ch; }
+.ella-doctor .ella-eyebrow { color: var(--ella-rose-300); }
+.ella-doctor .ella-btn-primary { background: var(--ella-cream-50); color: var(--ella-clay-900); }
+.ella-doctor .ella-btn-primary:hover { background: #fff; }
+.ella-doctor-checklist {
+  background: var(--ella-cream-50);
+  color: var(--ella-clay-900);
+  border-radius: 20px;
+  padding: 32px;
+  transform: rotate(-1.5deg);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+.ella-doctor-checklist h4 {
+  font-family: var(--font-display); font-size: 22px; line-height: 1.2; margin: 0 0 16px;
+}
+.ella-doctor-checklist ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.ella-doctor-checklist li {
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 15px; color: var(--ella-clay-700); line-height: 1.5;
+}
+.ella-doctor-checklist li .dot {
+  width: 18px; height: 18px; flex: 0 0 18px;
+  border-radius: 5px; border: 1.5px solid var(--ella-sand-300);
+  margin-top: 2px;
+}
+
+/* ---------- Newsletter (inline) ---------- */
+.ella-newsletter-form {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.ella-newsletter-form input {
+  flex: 1; min-width: 200px;
+  font-family: var(--font-body); font-size: 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--ella-white);
+  color: var(--ella-clay-900);
+}
+.ella-newsletter-form input:focus {
+  outline: 2px solid var(--ella-rose); outline-offset: 1px;
+}
+
+/* ---------- Footer ---------- */
+.ella-footer {
+  background: var(--ella-cream-100);
+  border-top: 1px solid var(--border-default);
+  padding: 56px 0 32px;
+  margin-top: 48px;
+}
+.ella-footer-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--space-10);
+}
+@media (min-width: 1024px) { .ella-footer-inner { padding: 0 var(--space-20); } }
+.ella-footer-newsletter-block { max-width: 720px; }
+.ella-footer-brand-row { margin: 0 0 40px; }
+.ella-footer-tagline { font-size: 17px; line-height: 1.55; color: var(--ella-clay-700); max-width: 36ch; margin: 16px 0 0; }
+.ella-footer-divider { height: 1px; background: var(--border-default); margin: 36px 0 24px; }
+.ella-footer-bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  font-size: 13px; color: var(--ella-taupe-500);
+  align-items: baseline;
+}
+.ella-footer-disclaim { font-style: italic; max-width: 40ch; }
+
+/* ---------- Article ---------- */
+.ella-article { max-width: 720px; margin: 0 auto; padding-top: 32px; }
+.ella-article-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--ella-rose-deep); font-weight: 600; font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 24px;
+}
+.ella-article h1 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.05; letter-spacing: -0.02em;
+  margin: 16px 0 18px;
+  color: var(--ella-clay-900);
+  text-wrap: balance;
+}
+.ella-article-lede { font-size: 22px; line-height: 1.55; color: var(--ella-clay-700); margin: 0 0 32px; max-width: 60ch; }
+.ella-article-meta { display: flex; gap: 16px; align-items: center; color: var(--ella-taupe-500); font-size: 14px; margin-bottom: 32px; }
+.ella-article-meta .dot { width: 4px; height: 4px; border-radius: 999px; background: var(--ella-taupe-400); }
+.ella-article-body p { font-size: 18px; line-height: 1.75; color: var(--ella-clay-700); margin: 0 0 22px; }
+.ella-article-body h2 { font-family: var(--font-display); font-size: 36px; line-height: 1.15; margin: 48px 0 16px; color: var(--ella-clay-900); }
+.ella-article-pull {
+  border-left: 3px solid var(--ella-rose);
+  padding: 8px 0 8px 24px;
+  margin: 36px 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 28px;
+  line-height: 1.3;
+  color: var(--ella-clay-900);
+}
+.ella-article-cover { border-radius: 24px; margin: 8px 0 36px; overflow: hidden; }
+.ella-article-actions { display: flex; gap: 8px; margin-bottom: 12px; }
+.ella-article-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 999px;
+  background: var(--ella-cream-100);
+  color: var(--ella-clay-700);
+  font-size: 14px; font-weight: 600;
+  border: 0;
+}
+.ella-article-pill:hover { background: var(--ella-sand-100); }
+
+.ella-protein-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0 32px;
+  font-size: 16px;
+  background: var(--ella-cream-50);
+  border: 1px solid var(--border-default);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.ella-protein-table th, .ella-protein-table td {
+  text-align: left;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-default);
+}
+.ella-protein-table th {
+  font-family: var(--font-body);
+  font-weight: 700;
+  background: var(--ella-cream-100);
+  color: var(--ella-clay-900);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.ella-protein-table tr:last-child td { border-bottom: 0; }
+
+/* ---------- Quiz ---------- */
+.ella-quiz {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 0;
+}
+.ella-quiz-progress {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 32px;
+  font-size: 14px; color: var(--ella-taupe-500); font-weight: 600; letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.ella-quiz-bar { height: 4px; background: var(--ella-sand-100); border-radius: 999px; overflow: hidden; }
+.ella-quiz-bar-fill { height: 100%; background: var(--ella-rose); transition: width 400ms var(--ease-out); }
+.ella-quiz-q {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1.15; letter-spacing: -0.02em;
+  color: var(--ella-clay-900);
+  margin: 24px 0 32px;
+  text-wrap: balance;
+}
+.ella-quiz-opts { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+.ella-quiz-opt {
+  width: 100%;
+  text-align: left;
+  padding: 18px 22px;
+  border-radius: 14px;
+  background: var(--ella-cream-50);
+  border: 1px solid var(--border-default);
+  color: var(--ella-clay-900);
+  font-size: 17px;
+  display: flex; align-items: center; gap: 14px;
+  transition: all 150ms var(--ease-out);
+}
+.ella-quiz-opt:hover { border-color: var(--ella-rose-300); background: var(--ella-blush-50); }
+.ella-quiz-opt.is-selected { border-color: var(--ella-rose); background: var(--ella-blush-50); }
+.ella-quiz-check {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ella-sand-300);
+  flex: 0 0 22px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 150ms var(--ease-out);
+}
+.ella-quiz-opt.is-selected .ella-quiz-check { border-color: var(--ella-rose); background: var(--ella-rose); }
+.ella-quiz-opt.is-selected .ella-quiz-check::after {
+  content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--ella-cream-50);
+}
+.ella-quiz-nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+
+/* ---------- Check-in banner (homepage entry to the quiz) ---------- */
+/* ---------- About Jessica ---------- */
+.ella-about-hero { display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 36px; }
+@media (min-width: 760px) { .ella-about-hero { grid-template-columns: 0.85fr 1.15fr; align-items: center; } }
+.ella-about-photo { max-width: 340px; }
+.ella-about-intro h1 { margin-top: 10px; }
+.ella-about-grid { display: grid; grid-template-columns: 1fr; gap: 28px; padding: 28px 0; border-top: 1px solid var(--border-default); }
+@media (min-width: 620px) { .ella-about-grid { grid-template-columns: 1fr 1fr; } }
+.ella-about-grid h2, .ella-about-contact h2 { font-family: var(--font-display); font-size: 22px; font-weight: 400; margin-bottom: 8px; }
+.ella-about-grid p, .ella-about-contact p { font-size: 16px; line-height: 1.6; color: var(--ella-clay-700); }
+.ella-about-contact { padding-top: 24px; border-top: 1px solid var(--border-default); }
+
+.ella-checkin {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+  background: var(--ella-cream-100);
+  border-radius: 28px;
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+}
+@media (min-width: 800px) {
+  .ella-checkin { grid-template-columns: auto 1fr; padding: 56px 64px; gap: 56px; }
+}
+.ella-checkin-num {
+  display: flex;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-size: clamp(72px, 9vw, 120px);
+  line-height: 0.9;
+  font-style: italic;
+  color: var(--ella-rose-deep);
+  letter-spacing: -0.04em;
+}
+.ella-checkin-num span:nth-child(2) {
+  color: var(--ella-sand-300);
+}
+.ella-checkin-body h2 em { color: var(--ella-rose-deep); }
+
+/* ---------- Hero affordability line ---------- */
+.ella-hero-afford {
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ella-clay-700);
+  margin-top: 14px;
+  padding-left: 16px;
+  border-left: 3px solid var(--ella-sage-300, var(--ella-sage-500));
+  max-width: 46ch;
+}
+.ella-hero-afford em { font-style: italic; color: var(--ella-clay-900); font-weight: 600; }
+
+/* ---------- WhatsApp button ---------- */
+.ella-btn-whatsapp {
+  background: #25D366;
+  color: #0b3d22;
+  border: 1px solid #1faa53;
+}
+.ella-btn-whatsapp:hover { background: #1ebe5b; }
+
+/* ---------- Consultation section ---------- */
+.ella-consult {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+  align-items: center;
+}
+@media (min-width: 860px) {
+  .ella-consult { grid-template-columns: 0.85fr 1.15fr; gap: 56px; }
+}
+.ella-consult-art { position: relative; max-width: 380px; }
+.ella-consult-badge {
+  position: absolute;
+  right: -14px;
+  bottom: -14px;
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  background: var(--ella-rose-deep);
+  color: var(--ella-cream-50);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  box-shadow: var(--shadow-lifted);
+  font-family: var(--font-display);
+}
+.ella-consult-badge-min { font-size: 38px; line-height: 1; }
+.ella-consult-badge-lbl { font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+.ella-consult-list {
+  list-style: none; padding: 0; margin: 22px 0 0;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.ella-consult-list li {
+  position: relative; padding-left: 28px;
+  font-size: 16px; color: var(--ella-clay-700); line-height: 1.5;
+}
+.ella-consult-list li::before {
+  content: ''; position: absolute; left: 0; top: 7px;
+  width: 16px; height: 9px;
+  border-left: 2px solid var(--ella-sage-500); border-bottom: 2px solid var(--ella-sage-500);
+  transform: rotate(-45deg);
+}
+.ella-consult-actions {
+  display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px;
+}
+
+/* ---------- Membership section ---------- */
+.ella-member {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+}
+@media (min-width: 860px) {
+  .ella-member { grid-template-columns: 1.2fr 0.8fr; gap: 56px; }
+}
+.ella-member-card {
+  background: var(--ella-white);
+  border: 1px solid var(--border-default);
+  border-radius: 22px;
+  padding: 32px;
+  box-shadow: var(--shadow-soft, var(--shadow-lifted));
+}
+.ella-member-price { display: flex; align-items: baseline; gap: 6px; }
+.ella-member-amt { font-family: var(--font-display); font-size: 56px; line-height: 1; color: var(--ella-clay-900); }
+.ella-member-per { font-size: 18px; color: var(--ella-clay-700); }
+.ella-member-list {
+  list-style: none; padding: 0; margin: 20px 0 24px;
+  display: flex; flex-direction: column; gap: 10px;
+  border-top: 1px solid var(--border-default);
+  padding-top: 20px;
+}
+.ella-member-list li {
+  position: relative; padding-left: 26px;
+  font-size: 15px; color: var(--ella-clay-700); line-height: 1.5;
+}
+.ella-member-list li::before {
+  content: ''; position: absolute; left: 0; top: 6px;
+  width: 14px; height: 8px;
+  border-left: 2px solid var(--ella-rose-deep); border-bottom: 2px solid var(--ella-rose-deep);
+  transform: rotate(-45deg);
+}
+.ella-member-note {
+  text-align: center; margin-top: 14px;
+  font-size: 13px; font-style: italic; color: var(--ella-taupe-500);
+}
+
+/* ---------- Section ornament (small wave) ---------- */
+.ella-wave-divider {
+  color: var(--ella-rose-300);
+  margin: 0 auto;
+  display: block;
+  height: 24px;
+  opacity: 0.6;
+}
+
+/* ---------- Supplements grid ---------- */
+.ella-supp-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+@media (min-width: 720px) {
+  .ella-supp-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 980px) {
+  .ella-supp-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.ella-supp-card {
+  background: var(--ella-white);
+  border: 1px solid var(--border-default);
+  border-radius: 16px;
+  padding: 22px;
+  display: flex; flex-direction: column; gap: 10px;
+  text-decoration: none; color: inherit;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  transition: box-shadow 220ms var(--ease-out), transform 220ms var(--ease-out);
+}
+.ella-supp-card:hover { box-shadow: var(--shadow-lifted); transform: translateY(-2px); }
+.ella-supp-card h4 { font-family: var(--font-display); font-size: 22px; line-height: 1.2; margin: 0; color: var(--ella-clay-900); }
+.ella-supp-card p { font-size: 14px; line-height: 1.5; color: var(--ella-clay-700); margin: 0; }
+.ella-supp-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px; border-radius: 999px;
+  background: var(--ella-sage-100); color: var(--ella-sage-700);
+  font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+  width: fit-content;
+}
+
+/* ---------- Supplement detail modal ---------- */
+.ella-supp-modal-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(47, 38, 29, 0.42);
+  backdrop-filter: blur(3px);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 5vh 20px;
+  overflow-y: auto;
+  animation: ella-fade-in 180ms var(--ease-out);
+}
+@keyframes ella-fade-in { from { opacity: 0; } to { opacity: 1; } }
+.ella-supp-modal {
+  background: var(--ella-cream-50);
+  border-radius: 24px;
+  max-width: 560px; width: 100%;
+  padding: 36px;
+  position: relative;
+  box-shadow: 0 24px 60px rgba(47, 38, 29, 0.28);
+  animation: ella-rise 220ms var(--ease-out);
+}
+@keyframes ella-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.ella-supp-modal-close {
+  position: absolute; top: 18px; right: 18px;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--border-default); background: var(--ella-white);
+  font-size: 22px; line-height: 1; color: var(--ella-clay-700);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background 180ms;
+}
+.ella-supp-modal-close:hover { background: var(--ella-cream-100); }
+.ella-supp-modal-head { display: flex; gap: 16px; align-items: center; margin-bottom: 24px; padding-right: 40px; }
+.ella-supp-modal-head h3 { font-family: var(--font-display); font-size: 30px; line-height: 1.1; margin: 8px 0 0; color: var(--ella-clay-900); }
+.ella-supp-modal-sub {
+  font-family: var(--font-body); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--ella-taupe-500);
+  margin: 24px 0 12px;
+}
+.ella-supp-why { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.ella-supp-why li {
+  position: relative; padding-left: 22px;
+  font-size: 16px; line-height: 1.6; color: var(--ella-clay-700);
+}
+.ella-supp-why li::before {
+  content: ''; position: absolute; left: 0; top: 9px;
+  width: 8px; height: 8px; border-radius: 50%; background: var(--ella-rose-deep);
+}
+.ella-supp-dose {
+  margin-top: 22px; padding: 16px 20px;
+  background: var(--ella-sage-100); border-radius: 14px;
+}
+.ella-supp-dose-lbl { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--ella-sage-700); }
+.ella-supp-dose p { margin: 6px 0 0; font-size: 15px; line-height: 1.55; color: var(--ella-clay-900); }
+.ella-supp-research { font-size: 15px; line-height: 1.6; color: var(--ella-clay-700); margin: 0; }
+.ella-supp-source {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 12px;
+  font-size: 14px; font-weight: 600; color: var(--ella-rose-deep); text-decoration: none;
+}
+.ella-supp-source:hover { text-decoration: underline; }
+.ella-supp-modal-actions { margin-top: 28px; }
+.ella-supp-modal-disc { margin-top: 14px; font-size: 12px; font-style: italic; color: var(--ella-taupe-500); }
+
+/* ---------- Italic editorial headlines (Pause Life-style) ---------- */
+.ella-h2-italic {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4.8vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--ella-clay-900);
+  margin: 0;
+  text-wrap: balance;
+}
+.ella-h2-italic em {
+  font-style: italic;
+  color: var(--ella-rose-deep);
+}
+.ella-h3-italic {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.4vw, 28px);
+  line-height: 1.15;
+  margin: 0 0 20px;
+  color: var(--ella-clay-900);
+  letter-spacing: -0.01em;
+}
+.ella-h3-italic em { font-style: italic; }
+
+/* ---------- Promo bar ---------- */
+.ella-promo {
+  background: var(--ella-clay-900);
+  color: var(--ella-cream-50);
+  overflow: hidden;
+  position: relative;
+}
+.ella-promo-track {
+  height: 38px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  padding: 0 var(--space-6);
+}
+.ella-promo-msg {
+  grid-column: 1; grid-row: 1;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ella-cream-50);
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out);
+  white-space: nowrap;
+  text-align: center;
+}
+.ella-promo-msg.is-active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.ella-promo-msg:hover { color: var(--ella-rose-300); }
+
+/* ---------- Featured-in press strip ---------- */
+.ella-featured-in {
+  padding: 40px 0 36px;
+  background: var(--ella-cream-50);
+  border-top: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border-default);
+}
+.ella-featured-label {
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--ella-taupe-500);
+  margin-bottom: 24px;
+}
+.ella-featured-grid {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+.ella-featured-logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: var(--ella-taupe-500);
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+/* ---------- Testimonials carousel ---------- */
+.ella-testimonials {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  min-height: 220px;
+}
+.ella-testimonial {
+  position: absolute; inset: 0;
+  margin: 0;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 18px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+  pointer-events: none;
+}
+.ella-testimonial.is-active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.ella-testimonial blockquote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(24px, 2.8vw, 34px);
+  line-height: 1.3;
+  color: var(--ella-clay-900);
+  margin: 0;
+  max-width: 22ch;
+}
+.ella-testimonial figcaption {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ella-taupe-500);
+}
+.ella-testimonial-dots {
+  display: flex; justify-content: center; gap: 10px;
+  margin-top: 24px;
+}
+.ella-testimonial-dot {
+  width: 8px; height: 8px;
+  padding: 0;
+  border-radius: 999px;
+  background: var(--ella-sand-300);
+  border: 0;
+  cursor: pointer;
+  transition: background 200ms, transform 200ms;
+}
+.ella-testimonial-dot.is-active {
+  background: var(--ella-rose);
+  transform: scale(1.25);
+}
+
+/* ---------- Community banner ---------- */
+.ella-community {
+  background: var(--ella-cream-100);
+  border-radius: 28px;
+  padding: 48px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .ella-community { grid-template-columns: 1fr 1.2fr; padding: 64px; gap: 64px; }
+}
+.ella-community-photo { width: 100%; }
+.ella-community-body h2 { margin: 10px 0 14px; }
+.ella-community-body p { font-size: 18px; line-height: 1.65; color: var(--ella-clay-700); margin: 0 0 24px; max-width: 52ch; }
+
+/* ---------- Info link grid ---------- */
+.ella-infolinks {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 800px)  { .ella-infolinks { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .ella-infolinks { grid-template-columns: repeat(3, 1fr); gap: 32px; } }
+.ella-infolinks-col {
+  background: var(--ella-cream-50);
+  border: 1px solid var(--border-default);
+  border-radius: 24px;
+  padding: 28px 32px;
+}
+.ella-infolinks-col[data-tone="rose"]  h3 em { color: var(--ella-rose-deep); }
+.ella-infolinks-col[data-tone="sage"]  h3 em { color: var(--ella-sage-700); }
+.ella-infolinks-col[data-tone="plum"]  h3 em { color: var(--ella-plum-700); }
+.ella-infolinks-col ul { list-style: none; padding: 0; margin: 0; }
+.ella-infolinks-col li + li { border-top: 1px solid var(--border-muted); }
+.ella-infolinks-col li a {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 0;
+  color: var(--ella-clay-700);
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 150ms;
+}
+.ella-infolinks-col li a:hover { color: var(--ella-rose-deep); }
+.ella-infolinks-col li a svg { color: var(--ella-sand-300); transition: color 150ms, transform 200ms; }
+.ella-infolinks-col li a:hover svg { color: var(--ella-rose-deep); transform: translateX(3px); }
+
+/* ---------- 4-column footer (overrides) ---------- */
+.ella-footer-cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+@media (min-width: 700px) { .ella-footer-cols { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .ella-footer-cols { grid-template-columns: repeat(4, 1fr); gap: 48px; } }
+.ella-footer-col h5 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ella-clay-900);
+  margin: 0 0 16px;
+}
+.ella-footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.ella-footer-col a { color: var(--ella-clay-700); text-decoration: none; font-size: 15px; }
+.ella-footer-col a:hover { color: var(--ella-rose-deep); }
+
+/* ---------- Quiz banner (Pause Life-style two-up) ---------- */
+.ella-quiz-banner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+  background: var(--ella-cream-100);
+  border-radius: 28px;
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+}
+@media (min-width: 900px) { .ella-quiz-banner { grid-template-columns: 1fr 1.15fr; padding: 56px 64px; gap: 64px; } }
+.ella-quiz-banner-art {
+  position: relative;
+  max-width: 360px;
+  margin: 0 auto;
+}
+.ella-quiz-banner-card {
+  position: absolute;
+  bottom: -16px;
+  right: -16px;
+  width: 78%;
+  background: var(--ella-cream-50);
+  border-radius: 16px;
+  box-shadow: var(--shadow-lifted);
+  padding: 18px 20px;
+  transform: rotate(2deg);
+}
+.ella-quiz-banner-opt {
+  font-size: 13px;
+  color: var(--ella-clay-700);
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--ella-cream-100);
+  border: 1px solid var(--border-default);
+}
+.ella-quiz-banner-opt.is-on { background: var(--ella-blush-100); border-color: var(--ella-rose); color: var(--ella-terracotta); }
+.ella-quiz-banner-body h2 em { color: var(--ella-rose-deep); }
+
+/* ---------- Stats row (under hero) ---------- */
+.ella-stat-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 36px;
+}
+@media (min-width: 700px) { .ella-stat-row { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .ella-stat-row { grid-template-columns: repeat(4, 1fr); gap: 28px; } }
+.ella-stat {
+  background: var(--ella-cream-50);
+  border: 1px solid var(--border-default);
+  border-radius: 20px;
+  padding: 28px 26px;
+  text-align: left;
+}
+.ella-stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 4vw, 56px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ella-rose-deep);
+}
+.ella-stat-num span {
+  font-size: 0.45em;
+  font-style: italic;
+  color: var(--ella-clay-700);
+  margin-left: 4px;
+  letter-spacing: 0;
+}
+.ella-stat-label {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ella-clay-700);
+  text-wrap: pretty;
+}
+
+/* ---------- Article grid & cards ---------- */
+.ella-article-filters {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin: 24px 0 40px;
+}
+.ella-article-filter {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border-default);
+  background: var(--ella-cream-50);
+  color: var(--ella-clay-700);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms var(--ease-out);
+}
+.ella-article-filter:hover { border-color: var(--ella-sand-300); }
+.ella-article-filter.is-active {
+  background: var(--ella-clay-900);
+  color: var(--ella-cream-50);
+  border-color: var(--ella-clay-900);
+}
+.ella-article-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+@media (min-width: 700px)  { .ella-article-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; } }
+@media (min-width: 1100px) { .ella-article-grid { grid-template-columns: repeat(3, 1fr); } }
+.ella-article-card {
+  display: flex; flex-direction: column; gap: 18px;
+}
+.ella-article-card-img {
+  border: 0; padding: 0; background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 16px;
+}
+.ella-article-card-img > div { transition: transform 600ms var(--ease-out); }
+.ella-article-card-img:hover > div { transform: scale(1.04); }
+.ella-article-card-body { display: flex; flex-direction: column; gap: 10px; }
+.ella-article-card-cat {
+  font-family: var(--font-body); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ella-taupe-500);
+}
+.ella-article-card[data-tone="sage"] .ella-article-card-cat { color: var(--ella-sage-700); }
+.ella-article-card[data-tone="plum"] .ella-article-card-cat { color: var(--ella-plum-500); }
+.ella-article-card[data-tone="rose"] .ella-article-card-cat { color: var(--ella-rose-deep); }
+.ella-article-card-title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--ella-clay-900);
+  margin: 0;
+  text-wrap: balance;
+}
+.ella-article-card-lede {
+  font-size: 16px; line-height: 1.55; color: var(--ella-clay-700);
+  margin: 0;
+}
+.ella-article-card-cta {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 6px;
+  border: 0; background: transparent;
+  font-family: var(--font-body); font-size: 15px; font-weight: 600;
+  color: var(--ella-rose-deep);
+  cursor: pointer;
+  padding: 6px 0;
+  transition: gap 200ms;
+}
+.ella-article-card-cta:hover { gap: 10px; }
+
+/* "Keep reading" mini cards inside article */
+.ella-article-mini {
+  display: flex; flex-direction: column; gap: 10px;
+  text-decoration: none; color: inherit;
+}
+.ella-article-mini > div:first-child { overflow: hidden; border-radius: 14px; }
+.ella-article-mini-cat {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ella-taupe-500);
+  margin-top: 4px;
+}
+.ella-article-mini-title {
+  font-family: var(--font-display); font-size: 20px;
+  line-height: 1.2; color: var(--ella-clay-900);
+}
+
+/* ---------- Food grid (Nutrition hub) ---------- */
+.ella-food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+.ella-food-card {
+  background: var(--ella-cream-50);
+  border: 1px solid var(--border-default);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.ella-food-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ella-sage-700);
+  margin-bottom: 4px;
+}
+.ella-food-name {
+  font-family: var(--font-display); font-size: 22px;
+  line-height: 1.15; color: var(--ella-clay-900);
+}
+.ella-food-amt {
+  font-family: var(--font-body); font-size: 15px;
+  color: var(--ella-clay-700);
+}
+
+/* ---------- Tweaks panel target ---------- */
+[data-screen-label] { scroll-margin-top: 100px; }
+
+/* ---------- Motion: page transitions & scroll reveal ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes ella-main-fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .ella-main-fade { animation: ella-main-fade-in 420ms cubic-bezier(.16,1,.3,1); }
+
+  .ella-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 700ms cubic-bezier(.16,1,.3,1), transform 700ms cubic-bezier(.16,1,.3,1);
+  }
+  .ella-reveal.is-visible { opacity: 1; transform: none; }
+
+  @keyframes ella-hero-item-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+  .ella-hero-grid > div:first-child > * {
+    animation: ella-hero-item-in 700ms cubic-bezier(.16,1,.3,1) both;
+  }
+  .ella-hero-grid > div:first-child > *:nth-child(1) { animation-delay: 40ms; }
+  .ella-hero-grid > div:first-child > *:nth-child(2) { animation-delay: 120ms; }
+  .ella-hero-grid > div:first-child > *:nth-child(3) { animation-delay: 200ms; }
+  .ella-hero-grid > div:first-child > *:nth-child(4) { animation-delay: 280ms; }
+  .ella-hero-grid > div:last-child { animation: ella-hero-item-in 800ms cubic-bezier(.16,1,.3,1) 160ms both; }
+
+  .ella-btn { transition: background 180ms var(--ease-out), color 180ms var(--ease-out), border-color 180ms var(--ease-out), box-shadow 180ms var(--ease-out), transform 150ms var(--ease-out); }
+  .ella-btn-primary:hover, .ella-btn-secondary:hover, .ella-btn-whatsapp:hover { transform: translateY(-1px); box-shadow: var(--shadow-soft); }
+
+  .ella-navlink::after { transition: transform 220ms cubic-bezier(.16,1,.3,1); transform-origin: left; }
+
+  .ella-langtoggle button.is-active { transition: background 220ms var(--ease-out), color 220ms var(--ease-out), box-shadow 220ms var(--ease-out); }
+
+  .ella-article-filter { transition: all 200ms cubic-bezier(.16,1,.3,1); }
+
+  .ella-supp-card, .ella-pillar-card, .ella-article-card-img > div { will-change: transform; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ella-reveal { opacity: 1 !important; transform: none !important; }
+}

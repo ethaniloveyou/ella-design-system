@@ -1,0 +1,30 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Components — Chips & Language Toggle" subtitle="Topic chips and EN/ES toggle" viewport="700x170" -->
+<html><head><meta charset="utf-8"><title>Tags, chips & toggle</title><link rel="stylesheet" href="_card.css">
+<style>
+  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; font-family: var(--font-body); font-size: 14px; font-weight: 600; }
+  .chip-default { background: var(--ella-sand-100); color: var(--ella-clay-700); }
+  .chip-rose { background: var(--ella-blush-100); color: var(--ella-terracotta); }
+  .chip-sage { background: var(--ella-sage-100); color: var(--ella-sage-700); }
+  .chip-plum { background: var(--ella-plum-100); color: var(--ella-plum-700); }
+  .toggle { display: inline-flex; padding: 4px; background: var(--ella-cream-100); border: 1px solid var(--border-default); border-radius: 999px; gap: 2px; }
+  .toggle button { padding: 6px 14px; border-radius: 999px; border: 0; background: transparent; font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--ella-taupe-500); cursor: pointer; letter-spacing: 0.04em; }
+  .toggle button.is-active { background: var(--ella-cream-50); color: var(--ella-clay-900); box-shadow: var(--shadow-soft); }
+</style>
+</head>
+<body>
+  <div class="card-row" style="gap: 8px; align-items: center;">
+    <span class="chip chip-default">All topics</span>
+    <span class="chip chip-rose">Perimenopause</span>
+    <span class="chip chip-sage">Nutrition</span>
+    <span class="chip chip-plum">Hormonal therapy</span>
+    <span class="chip chip-default">Sleep</span>
+  </div>
+  <div class="card-row" style="gap: 12px; align-items: center; margin-top: 18px;">
+    <div class="toggle">
+      <button class="is-active">EN</button>
+      <button>ES</button>
+    </div>
+    <div class="swatch-token">Language toggle · top-right of header · persists across navigation</div>
+  </div>
+</body></html>

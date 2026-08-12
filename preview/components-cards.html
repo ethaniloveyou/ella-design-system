@@ -1,0 +1,29 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Components — Cards" subtitle="Default · featured · hover" viewport="700x200" -->
+<html><head><meta charset="utf-8"><title>Cards</title><link rel="stylesheet" href="_card.css">
+<style>
+  .ella-card { background: var(--ella-white); border: 1px solid var(--border-default); border-radius: 12px; padding: 24px; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; gap: 10px; flex: 1; min-width: 200px; }
+  .ella-card:hover { box-shadow: var(--shadow-lifted); }
+  .ella-card .icon { width: 32px; height: 32px; color: var(--ella-rose); }
+  .ella-card-feature { background: var(--ella-blush-50); border: 0; }
+</style>
+</head>
+<body>
+  <div class="card-row" style="gap: 16px;">
+    <div class="ella-card">
+      <div style="font-family: var(--font-display); font-size: 24px; line-height: 1.15;">Nutrition</div>
+      <div style="font-size: 15px; color: var(--ella-clay-700);">Foods to include, protein needs, healthier swaps.</div>
+      <div style="margin-top: 6px;"><a style="color: var(--ella-rose-deep); font-weight: 600; font-size: 14px;">Browse →</a></div>
+    </div>
+    <div class="ella-card ella-card-feature">
+      <div class="ella-eyebrow">FEATURED</div>
+      <div style="font-family: var(--font-display); font-size: 24px; line-height: 1.15;">Hormonal therapy</div>
+      <div style="font-size: 15px; color: var(--ella-clay-700);">Your options, in plain English.</div>
+    </div>
+    <div class="ella-card" style="box-shadow: var(--shadow-lifted);">
+      <div style="font-family: var(--font-display); font-size: 24px; line-height: 1.15;">Mental health</div>
+      <div style="font-size: 15px; color: var(--ella-clay-700);">Support groups, meetups, and resources.</div>
+      <div class="swatch-token" style="margin-top: 6px;">:hover</div>
+    </div>
+  </div>
+</body></html>

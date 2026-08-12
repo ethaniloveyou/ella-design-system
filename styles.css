@@ -1,0 +1,6 @@
+/* Ella Design System — entry stylesheet.
+   Consumers link this one file; it pulls in the design tokens and the
+   web-font @font-face declarations. */
+
+@import "colors_and_type.css";
+@import "fonts/fonts.css";

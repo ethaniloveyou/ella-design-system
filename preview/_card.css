@@ -1,0 +1,48 @@
+/* Preview card base — used by every card in /preview/ */
+@import url('../colors_and_type.css');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-canvas);
+}
+
+body {
+  padding: 28px 32px;
+  color: var(--fg-primary);
+}
+
+.card-row {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.swatch-chip {
+  height: 72px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+}
+
+.swatch-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fg-secondary);
+  font-family: var(--font-body);
+  white-space: nowrap;
+}
+
+.swatch-token {
+  font-size: 11px;
+  color: var(--fg-muted);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  white-space: nowrap;
+}

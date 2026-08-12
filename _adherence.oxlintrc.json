@@ -1,0 +1,342 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "ui_kits/website/**",
+              "ui_kits/website/components/**",
+              "ui_kits/website/screens/**",
+              "workbook-app.js",
+              "workbook-data.js"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:DM Serif Display|Nunito))/i]",
+        "message": "Font not provided by the design system. Available: DM Serif Display, Nunito."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "AboutJessica": {
+        "replaces": []
+      },
+      "ArticlesHub": {
+        "replaces": []
+      },
+      "ArticleView": {
+        "replaces": []
+      },
+      "AskYourDoctor": {
+        "replaces": []
+      },
+      "AwarenessQuiz": {
+        "replaces": []
+      },
+      "CommunityBanner": {
+        "replaces": []
+      },
+      "FeaturedIn": {
+        "replaces": []
+      },
+      "Footer": {
+        "replaces": []
+      },
+      "Header": {
+        "replaces": []
+      },
+      "Homepage": {
+        "replaces": []
+      },
+      "HormonalTherapy": {
+        "replaces": []
+      },
+      "Icons": {
+        "replaces": []
+      },
+      "InfoLinks": {
+        "replaces": []
+      },
+      "NutritionHub": {
+        "replaces": []
+      },
+      "Photo": {
+        "replaces": []
+      },
+      "PromoBar": {
+        "replaces": []
+      },
+      "ReproductiveHealth": {
+        "replaces": []
+      },
+      "SupplementsHub": {
+        "replaces": []
+      },
+      "SvgAssets": {
+        "replaces": []
+      },
+      "Testimonials": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--bg-accent-soft",
+      "--bg-canvas",
+      "--bg-elevated",
+      "--bg-hover",
+      "--bg-muted",
+      "--border-default",
+      "--border-focus",
+      "--border-muted",
+      "--border-strong",
+      "--brand-primary",
+      "--brand-primary-hover",
+      "--content-max",
+      "--duration-base",
+      "--duration-enter",
+      "--duration-fast",
+      "--duration-slow",
+      "--ease-in",
+      "--ease-inout",
+      "--ease-out",
+      "--ella-black",
+      "--ella-blush-100",
+      "--ella-blush-50",
+      "--ella-clay-700",
+      "--ella-clay-900",
+      "--ella-cream-100",
+      "--ella-cream-50",
+      "--ella-error",
+      "--ella-info",
+      "--ella-plum-100",
+      "--ella-plum-300",
+      "--ella-plum-500",
+      "--ella-plum-700",
+      "--ella-rose",
+      "--ella-rose-300",
+      "--ella-rose-deep",
+      "--ella-sage-100",
+      "--ella-sage-300",
+      "--ella-sage-500",
+      "--ella-sage-700",
+      "--ella-sand-100",
+      "--ella-sand-200",
+      "--ella-sand-300",
+      "--ella-success",
+      "--ella-taupe-400",
+      "--ella-taupe-500",
+      "--ella-terracotta",
+      "--ella-warning",
+      "--ella-white",
+      "--fg-brand",
+      "--fg-brand-deep",
+      "--fg-muted",
+      "--fg-on-rose",
+      "--fg-primary",
+      "--fg-secondary",
+      "--fg-subtle",
+      "--font-body",
+      "--font-display",
+      "--gutter",
+      "--header-height",
+      "--leading-normal",
+      "--leading-relaxed",
+      "--leading-snug",
+      "--leading-tight",
+      "--radius-lg",
+      "--radius-md",
+      "--radius-pill",
+      "--radius-sm",
+      "--radius-xl",
+      "--radius-xs",
+      "--shadow-inset-focus",
+      "--shadow-lifted",
+      "--shadow-modal",
+      "--shadow-soft",
+      "--space-1",
+      "--space-10",
+      "--space-12",
+      "--space-16",
+      "--space-2",
+      "--space-20",
+      "--space-24",
+      "--space-3",
+      "--space-32",
+      "--space-4",
+      "--space-40",
+      "--space-5",
+      "--space-6",
+      "--space-8",
+      "--text-2xl",
+      "--text-3xl",
+      "--text-4xl",
+      "--text-5xl",
+      "--text-6xl",
+      "--text-7xl",
+      "--text-base",
+      "--text-lg",
+      "--text-md",
+      "--text-sm",
+      "--text-xl",
+      "--text-xs",
+      "--tracking-eyebrow",
+      "--tracking-normal",
+      "--tracking-tight",
+      "--tracking-wide",
+      "--weight-bold",
+      "--weight-medium",
+      "--weight-regular",
+      "--weight-semibold"
+    ],
+    "tokenKinds": {
+      "--font-display": "font",
+      "--font-body": "font",
+      "--ella-cream-50": "color",
+      "--ella-cream-100": "color",
+      "--ella-sand-100": "color",
+      "--ella-sand-200": "color",
+      "--ella-sand-300": "color",
+      "--ella-taupe-400": "color",
+      "--ella-taupe-500": "color",
+      "--ella-clay-700": "color",
+      "--ella-clay-900": "color",
+      "--ella-blush-50": "color",
+      "--ella-blush-100": "color",
+      "--ella-rose-300": "color",
+      "--ella-rose": "color",
+      "--ella-rose-deep": "color",
+      "--ella-terracotta": "color",
+      "--ella-sage-100": "color",
+      "--ella-sage-300": "color",
+      "--ella-sage-500": "color",
+      "--ella-sage-700": "color",
+      "--ella-plum-100": "color",
+      "--ella-plum-300": "color",
+      "--ella-plum-500": "color",
+      "--ella-plum-700": "color",
+      "--ella-success": "color",
+      "--ella-warning": "color",
+      "--ella-error": "color",
+      "--ella-info": "color",
+      "--ella-white": "color",
+      "--ella-black": "color",
+      "--bg-canvas": "color",
+      "--bg-elevated": "color",
+      "--bg-muted": "color",
+      "--bg-hover": "color",
+      "--bg-accent-soft": "color",
+      "--fg-primary": "color",
+      "--fg-secondary": "color",
+      "--fg-muted": "color",
+      "--fg-subtle": "color",
+      "--fg-on-rose": "color",
+      "--fg-brand": "color",
+      "--fg-brand-deep": "color",
+      "--border-default": "color",
+      "--border-muted": "color",
+      "--border-strong": "color",
+      "--border-focus": "color",
+      "--brand-primary": "color",
+      "--brand-primary-hover": "color",
+      "--text-base": "font",
+      "--text-xs": "font",
+      "--text-sm": "font",
+      "--text-md": "font",
+      "--text-lg": "font",
+      "--text-xl": "font",
+      "--text-2xl": "font",
+      "--text-3xl": "font",
+      "--text-4xl": "font",
+      "--text-5xl": "font",
+      "--text-6xl": "font",
+      "--text-7xl": "font",
+      "--leading-tight": "font",
+      "--leading-snug": "font",
+      "--leading-normal": "font",
+      "--leading-relaxed": "font",
+      "--tracking-tight": "font",
+      "--tracking-normal": "font",
+      "--tracking-wide": "font",
+      "--tracking-eyebrow": "font",
+      "--weight-regular": "font",
+      "--weight-medium": "font",
+      "--weight-semibold": "font",
+      "--weight-bold": "font",
+      "--space-1": "spacing",
+      "--space-2": "spacing",
+      "--space-3": "spacing",
+      "--space-4": "spacing",
+      "--space-5": "spacing",
+      "--space-6": "spacing",
+      "--space-8": "spacing",
+      "--space-10": "spacing",
+      "--space-12": "spacing",
+      "--space-16": "spacing",
+      "--space-20": "spacing",
+      "--space-24": "spacing",
+      "--space-32": "spacing",
+      "--space-40": "spacing",
+      "--radius-xs": "radius",
+      "--radius-sm": "radius",
+      "--radius-md": "radius",
+      "--radius-lg": "radius",
+      "--radius-xl": "radius",
+      "--radius-pill": "radius",
+      "--shadow-soft": "shadow",
+      "--shadow-lifted": "shadow",
+      "--shadow-modal": "shadow",
+      "--shadow-inset-focus": "shadow",
+      "--duration-fast": "other",
+      "--duration-base": "other",
+      "--duration-slow": "other",
+      "--duration-enter": "other",
+      "--ease-out": "other",
+      "--ease-in": "other",
+      "--ease-inout": "other",
+      "--content-max": "spacing",
+      "--gutter": "spacing",
+      "--header-height": "spacing"
+    },
+    "fontFamilies": [
+      "DM Serif Display",
+      "Nunito"
+    ]
+  }
+}

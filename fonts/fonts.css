@@ -1,0 +1,11 @@
+/* Ella typeface stack — flagged Google Fonts substitutions.
+   Replace with licensed font files (Recoleta, GT Sectra, Söhne, etc.)
+   if Jessica provides them. */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:ital,wght@0,300..900;1,300..900&display=swap');
+
+/* Family aliases used throughout the system */
+:root {
+  --font-display: 'DM Serif Display', 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Nunito', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+}

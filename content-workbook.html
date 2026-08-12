@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Brand" name="Ella Content Workbook" subtitle="Fill-in-the-blanks content doc with voice, sources & photo guidance" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ella — Content Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:ital,wght@0,400..800;1,400..700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream-50:#fbf8f4; --cream-100:#f6f0e8; --sand-100:#efe7da; --sand-200:#e4d9c7; --sand-300:#d3c4ab;
+    --taupe-400:#a89a83; --taupe-500:#8b7c64; --clay-700:#574736; --clay-900:#2f261d;
+    --blush-50:#fbeee9; --blush-100:#f6dcd1; --rose:#c87f6e; --rose-deep:#a85f4d; --terra:#8a4a3a;
+    --sage-500:#6f7e5d; --plum-500:#7e5266;
+    --serif:'DM Serif Display',Georgia,serif; --body:'Nunito','Segoe UI',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--cream-50);color:var(--clay-700);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px;}
+  h1,h2,h3{font-family:var(--serif);color:var(--clay-900);font-weight:400;line-height:1.1;}
+  em{font-style:italic;}
+  a{color:var(--rose-deep);}
+
+  /* Toolbar */
+  .bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--cream-50) 92%,transparent);
+       backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--sand-200);}
+  .bar-in{max-width:880px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .bar-title{font-family:var(--serif);font-size:20px;color:var(--clay-900);margin-right:auto;}
+  .bar-title span{color:var(--rose-deep);font-style:italic;}
+  .prog{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:var(--taupe-500);}
+  .bar-track{width:120px;height:7px;border-radius:99px;background:var(--sand-200);overflow:hidden;}
+  #wb-bar-fill{height:100%;background:var(--rose);width:0;transition:width .3s ease;}
+  .btn{font-family:var(--body);font-weight:700;font-size:14px;border:0;border-radius:99px;padding:9px 16px;cursor:pointer;}
+  .btn-pri{background:var(--rose);color:#fff;} .btn-pri:hover{background:var(--rose-deep);}
+  .btn-sec{background:transparent;color:var(--clay-700);border:1px solid var(--sand-300);} .btn-sec:hover{background:var(--sand-100);}
+  .btn-ghost{background:transparent;color:var(--taupe-500);} .btn-ghost:hover{color:var(--rose-deep);}
+
+  /* Intro */
+  header.hero{padding:56px 0 8px;}
+  .eyebrow{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--rose-deep);}
+  header.hero h1{font-size:clamp(40px,6vw,64px);margin:14px 0 10px;}
+  header.hero h1 em{color:var(--rose-deep);}
+  .lede{font-size:20px;line-height:1.55;color:var(--clay-700);max-width:62ch;}
+  .panel{background:#fff;border:1px solid var(--sand-200);border-radius:16px;padding:24px 26px;margin:22px 0;box-shadow:0 1px 2px rgba(74,47,40,.04),0 2px 8px rgba(74,47,40,.05);}
+  .panel h3{font-size:24px;margin-bottom:6px;}
+  .panel h3 .ic{font-style:normal;}
+  .panel ul{margin:10px 0 0 0;padding-left:0;list-style:none;}
+  .panel li{position:relative;padding-left:24px;margin:8px 0;line-height:1.5;}
+  .panel li::before{content:'';position:absolute;left:4px;top:10px;width:7px;height:7px;border-radius:99px;background:var(--rose-300,#e6b3a4);}
+  .panel li b{color:var(--clay-900);}
+  .two{display:grid;gap:18px;}
+  @media(min-width:740px){.two{grid-template-columns:1fr 1fr;}}
+  .mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;background:var(--cream-100);border:1px solid var(--sand-200);border-radius:10px;padding:12px 14px;color:var(--clay-700);white-space:pre-wrap;}
+  .src-list a{font-weight:700;}
+
+  /* Sections */
+  #wb-sections{padding:8px 0 40px;}
+  .wb-sec{margin-top:40px;}
+  .wb-sec-head{border-top:2px solid var(--sand-300);padding-top:18px;margin-bottom:8px;}
+  .wb-sec-head h2{font-size:30px;}
+  .wb-sec-blurb{color:var(--taupe-500);font-size:15.5px;margin-top:6px;max-width:64ch;}
+  .wb-slot{background:#fff;border:1px solid var(--sand-200);border-radius:14px;padding:18px 20px;margin:16px 0;}
+  .wb-slot-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .wb-slot-label{font-family:var(--serif);font-size:19px;color:var(--clay-900);}
+  .wb-flag{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:99px;}
+  .flag-source{background:#fdf2e2;color:#9a6a1e;border:1px solid #f0dcb8;}
+  .flag-real{background:var(--blush-50);color:var(--rose-deep);border:1px solid var(--blush-100);}
+  .flag-scope{background:#ece7f0;color:var(--plum-500);border:1px solid #ddd0e0;}
+  .wb-guide{font-size:14.5px;color:var(--taupe-500);margin:8px 0 0;line-height:1.5;}
+  .wb-current{margin:12px 0 4px;border-left:3px solid var(--sand-300);padding:2px 0 2px 14px;}
+  .wb-current-tag{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--taupe-400);margin-bottom:4px;}
+  .wb-current-text{font-size:14.5px;color:var(--clay-700);line-height:1.55;font-style:italic;}
+  .wb-input{width:100%;margin-top:14px;font-family:var(--body);font-size:16px;line-height:1.6;color:var(--clay-900);
+    background:var(--cream-50);border:1px solid var(--sand-300);border-radius:10px;padding:12px 14px;resize:none;overflow:hidden;min-height:44px;}
+  .wb-input:focus{outline:2px solid var(--rose);outline-offset:2px;border-color:var(--rose);background:#fff;}
+  .wb-input::placeholder{color:var(--taupe-400);}
+
+  footer.foot{padding:30px 0 70px;color:var(--taupe-500);font-size:14px;text-align:center;}
+
+  #wb-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;pointer-events:none;
+    background:var(--clay-900);color:var(--cream-50);font-weight:700;font-size:14px;padding:11px 20px;border-radius:99px;
+    transition:all .25s ease;z-index:100;box-shadow:0 8px 24px rgba(47,38,29,.25);}
+  #wb-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  @media print{
+    .bar,#wb-toast,.btn{display:none!important;}
+    body{background:#fff;} .wb-slot,.panel{box-shadow:none;break-inside:avoid;}
+    .wb-input{border:1px solid #ccc;}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="bar-title">Ella <span>Content Workbook</span></div>
+    <div class="prog"><span id="wb-count">0 / 0</span><div class="bar-track"><div id="wb-bar-fill"></div></div></div>
+    <button class="btn btn-pri" id="wb-copy">Copy all my words</button>
+    <button class="btn btn-sec" id="wb-download">Download .txt</button>
+    <button class="btn btn-ghost" id="wb-clear">Clear</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">For Jessica · write it in your voice</div>
+    <h1>Everything on the site, <em>in your own words.</em></h1>
+    <p class="lede">Every headline, paragraph, article, and quiz question on the site is a slot below. Type your version in the box under each one. It saves automatically in this browser as you go. When you’re done (or partway), hit <b>Copy all my words</b> and paste it back to me in the chat, and I’ll drop it straight into the site.</p>
+  </header>
+
+  <div class="panel">
+    <h3><span class="ic">✍️</span> How to use this</h3>
+    <ul>
+      <li><b>Write under each slot.</b> The italic grey text is what’s on the site right now, just a reference. Replace it with your words.</li>
+      <li><b>Lengths are guides, not rules.</b> Shorter is usually better. If a slot doesn’t fit your vision, leave it blank and tell me.</li>
+      <li><b>It autosaves</b> to this browser. Use the same browser/device to come back to it. <b>Copy all my words</b> or <b>Download .txt</b> when ready.</li>
+      <li><b>Watch for the colored tags:</b> <span class="wb-flag flag-source">NEEDS A SOURCE</span> <span class="wb-flag flag-real">MUST BE REAL</span> <span class="wb-flag flag-scope">PENDING SCOPE (Q1)</span></li>
+    </ul>
+  </div>
+
+  <div class="panel">
+    <h3><span class="ic">🗣️</span> Your voice — keep this DNA</h3>
+    <div class="two">
+      <ul>
+        <li><b>Plainspoken.</b> Write like you’d talk to one woman across a table. Short sentences.</li>
+        <li><b>Second person.</b> “You”, not “women” or “patients”, wherever you can.</li>
+        <li><b>No alarmism, no judgment.</b> Calm and matter-of-fact beats scary.</li>
+      </ul>
+      <ul>
+        <li><b>Options, not endorsements.</b> Explain choices; don’t prescribe or sell.</li>
+        <li><b>Specific over vague.</b> A concrete example beats an adjective.</li>
+        <li><b>No em-dashes</b> (your preference). Commas or short sentences instead.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3><span class="ic">📚</span> Sources &amp; citations — set this up now</h3>
+    <p style="margin-bottom:4px;">For a health site, an unsourced statistic is a liability. Decide a simple, repeatable pattern. My suggestion:</p>
+    <ul>
+      <li><b>End each article with a “Sources” list</b> of 2–5 links. In the text, a claim can read naturally (“research suggests…”) and link out.</li>
+      <li><b>Lean on authorities</b>, not random blogs:
+        <span class="src-list">
+          <a href="https://menopause.org" target="_blank" rel="noopener">The Menopause Society (NAMS)</a>,
+          <a href="https://www.acog.org" target="_blank" rel="noopener">ACOG</a>,
+          <a href="https://www.womenshealth.gov" target="_blank" rel="noopener">Office on Women’s Health</a>,
+          <a href="https://www.nice.org.uk" target="_blank" rel="noopener">NICE</a>,
+          <a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" rel="noopener">PubMed</a>.
+        </span>
+      </li>
+      <li><b>Claims already on the site that need a source</b> (find or soften each):</li>
+    </ul>
+    <div class="mono">• “About half of all women go through menopause”
+• “Most medical curricula spend less than 1 hour on menopause”
+• “Perimenopause lasts 7–14 years”
+• “We lose ~1% of muscle per year after ~45”
+• “Aim for 1.2–1.6 g protein per kg of body weight”</div>
+  </div>
+
+  <div class="panel">
+    <h3><span class="ic">📷</span> Photo shot list</h3>
+    <p style="margin-bottom:4px;">Biggest trust lever for a 45–70 audience: <b>show women in that actual age range</b>, natural light, real expressions. Current placements:</p>
+    <ul>
+      <li><b>Hero</b> — woman on a terrace (45–70). <span style="color:var(--sage-500);font-weight:700;">Good fit.</span></li>
+      <li><b>Consultation + About</b> — a studio portrait stands in for Jessica. <b style="color:var(--rose-deep);">Replace with a real photo of Jessica</b> (her face is the trust).</li>
+      <li><b>Perimenopause article</b> — reflective portrait. <span style="color:var(--sage-500);font-weight:700;">Good fit.</span></li>
+      <li><b>Food swaps</b> — green flat-lay (age-neutral). Fine.</li>
+      <li><b>Protein</b> — kitchen, <b>Sleep</b> — calm portrait, <b>Strength</b> — workout: all read a bit <i>young</i>. Swap toward women 45+ when you can.</li>
+      <li><b>Hot flashes</b> — terrace portrait. Fine.</li>
+    </ul>
+  </div>
+
+  <div id="wb-sections"></div>
+
+  <footer class="foot">When you’re ready, hit <b>Copy all my words</b> up top and paste it to me in the chat. We’ll go page by page.</footer>
+</div>
+
+<div id="wb-toast"></div>
+
+<script src="workbook-data.js"></script>
+<script src="workbook-app.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Components — Buttons" subtitle="Primary / secondary / text / states" viewport="700x200" -->
+<html><head><meta charset="utf-8"><title>Buttons</title><link rel="stylesheet" href="_card.css">
+<style>
+  .btn { font-family: var(--font-body); font-weight: 600; font-size: 16px; border-radius: 12px; padding: 14px 24px; border: 0; cursor: pointer; transition: background 200ms var(--ease-out), color 200ms var(--ease-out); display: inline-flex; align-items: center; gap: 8px; }
+  .btn-primary { background: var(--ella-rose); color: var(--ella-cream-50); }
+  .btn-primary:hover { background: var(--ella-rose-deep); }
+  .btn-secondary { background: var(--ella-cream-50); color: var(--ella-clay-900); border: 1px solid var(--border-strong); }
+  .btn-secondary:hover { background: var(--ella-sand-100); }
+  .btn-text { background: transparent; color: var(--ella-rose-deep); padding: 14px 8px; }
+  .btn-text:hover { color: var(--ella-terracotta); text-decoration: underline; text-underline-offset: 4px; }
+  .btn-pill { border-radius: 999px; }
+  .btn-sm { padding: 10px 16px; font-size: 14px; }
+</style>
+</head>
+<body>
+  <div class="card-row" style="gap: 12px; align-items: center;">
+    <button class="btn btn-primary">Start exploring</button>
+    <button class="btn btn-secondary">Watch Jessica's intro</button>
+    <button class="btn btn-text">What is HRT? →</button>
+    <button class="btn btn-primary btn-pill btn-sm">Subscribe</button>
+  </div>
+  <div class="card-row" style="gap: 12px; align-items: center; margin-top: 16px;">
+    <button class="btn btn-primary" disabled style="opacity: 0.5; cursor: not-allowed;">Disabled</button>
+    <button class="btn btn-primary" style="background: var(--ella-rose-deep);">:hover state</button>
+    <button class="btn btn-primary" style="box-shadow: 0 0 0 3px var(--ella-blush-100); outline: 2px solid var(--ella-rose); outline-offset: 1px;">:focus state</button>
+  </div>
+</body></html>

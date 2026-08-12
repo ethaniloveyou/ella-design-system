@@ -1,0 +1,317 @@
+/* =========================================================
+   Ella Design System — Colors & Type
+   =========================================================
+   This file is the single source of truth for low-level
+   design tokens (colors, typography, spacing, radii,
+   shadows) and the semantic CSS variables used across
+   Ella surfaces.
+
+   Companion file: fonts/fonts.css imports the typefaces.
+   ========================================================= */
+
+@import url('./fonts/fonts.css');
+
+:root {
+  /* ---------------------------------------------------------
+     1. COLOR — raw palette
+     --------------------------------------------------------- */
+
+  /* Warm neutrals (the dominant ~70% of any layout) */
+  --ella-cream-50:    #fbf8f4;   /* canvas */
+  --ella-cream-100:   #f6f0e8;   /* alt section background */
+  --ella-sand-100:    #efe7da;   /* hover surfaces */
+  --ella-sand-200:    #e4d9c7;   /* default border */
+  --ella-sand-300:    #d3c4ab;   /* muted divider */
+  --ella-taupe-400:   #a89a83;   /* muted text */
+  --ella-taupe-500:   #8b7c64;   /* secondary text */
+  --ella-clay-700:    #574736;   /* primary text */
+  --ella-clay-900:    #2f261d;   /* high-emphasis text, headlines */
+
+  /* Brand rose family — dusty, muted, NEVER hot pink */
+  --ella-blush-50:    #fbeee9;   /* tinted wash */
+  --ella-blush-100:   #f6dcd1;   /* soft accent surface */
+  --ella-rose-300:    #e6b3a4;   /* secondary brand */
+  --ella-rose:        #c87f6e;   /* PRIMARY brand color */
+  --ella-rose-deep:   #a85f4d;   /* hover / press of primary */
+  --ella-terracotta:  #8a4a3a;   /* deepest rose — text on cream */
+
+  /* Sage (nutrition / nature) */
+  --ella-sage-100:    #e2e6d9;
+  --ella-sage-300:    #aab59a;
+  --ella-sage-500:    #6f7e5d;
+  --ella-sage-700:    #4a5740;
+
+  /* Plum (hormonal therapy / deeper clinical) */
+  --ella-plum-100:    #e8dde2;
+  --ella-plum-300:    #b893a3;
+  --ella-plum-500:    #7e5266;
+  --ella-plum-700:    #553343;
+
+  /* Functional / semantic (used sparingly) */
+  --ella-success:     #6f7e5d;   /* reuses sage */
+  --ella-warning:     #c89a4a;   /* warm honey */
+  --ella-error:       #a85f4d;   /* reuses rose-deep, no harsh red */
+  --ella-info:        #7e5266;   /* reuses plum */
+
+  /* Pure utility */
+  --ella-white:       #ffffff;
+  --ella-black:       #1a1410;   /* warm black, never pure #000 */
+
+  /* ---------------------------------------------------------
+     2. COLOR — semantic tokens (use these in product code)
+     --------------------------------------------------------- */
+
+  --bg-canvas:        var(--ella-cream-50);
+  --bg-elevated:      var(--ella-white);
+  --bg-muted:         var(--ella-cream-100);
+  --bg-hover:         var(--ella-sand-100);
+  --bg-accent-soft:   var(--ella-blush-50);
+
+  --fg-primary:       var(--ella-clay-900);
+  --fg-secondary:     var(--ella-clay-700);
+  --fg-muted:         var(--ella-taupe-500);
+  --fg-subtle:        var(--ella-taupe-400);
+  --fg-on-rose:       var(--ella-cream-50);
+  --fg-brand:         var(--ella-rose);
+  --fg-brand-deep:    var(--ella-rose-deep);
+
+  --border-default:   var(--ella-sand-200);
+  --border-muted:     var(--ella-sand-100);
+  --border-strong:    var(--ella-sand-300);
+  --border-focus:     var(--ella-rose);
+
+  --brand-primary:    var(--ella-rose);
+  --brand-primary-hover: var(--ella-rose-deep);
+
+  /* ---------------------------------------------------------
+     3. TYPOGRAPHY
+     --------------------------------------------------------- */
+
+  /* Base size is 18px (audience skews 45+ — reads more
+     comfortably than a default 16). */
+  --text-base: 18px;
+
+  /* Scale (1.250 — major third, gentle/editorial) */
+  --text-xs:   14px;
+  --text-sm:   16px;
+  --text-md:   18px;     /* body default */
+  --text-lg:   20px;
+  --text-xl:   24px;
+  --text-2xl:  30px;
+  --text-3xl:  38px;
+  --text-4xl:  48px;
+  --text-5xl:  60px;
+  --text-6xl:  76px;
+  --text-7xl:  96px;     /* hero only */
+
+  /* Line heights */
+  --leading-tight:   1.1;
+  --leading-snug:    1.25;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.7;   /* body copy default — generous for older eyes */
+
+  /* Letter spacing */
+  --tracking-tight:  -0.02em;   /* display headlines */
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+  --tracking-eyebrow: 0.14em;   /* small caps eyebrow labels */
+
+  /* Weights */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* ---------------------------------------------------------
+     4. SPACING (8pt grid)
+     --------------------------------------------------------- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+  --space-40: 160px;
+
+  /* ---------------------------------------------------------
+     5. RADII
+     --------------------------------------------------------- */
+  --radius-xs:    4px;
+  --radius-sm:    8px;
+  --radius-md:    12px;   /* default — cards, buttons, images */
+  --radius-lg:    16px;
+  --radius-xl:    24px;   /* hero containers, feature cards */
+  --radius-pill:  999px;  /* chips, tags, language toggle */
+
+  /* ---------------------------------------------------------
+     6. SHADOWS — soft, warm, low-spread
+     --------------------------------------------------------- */
+  --shadow-soft:    0 1px 2px rgba(74, 47, 40, 0.04), 0 2px 8px rgba(74, 47, 40, 0.06);
+  --shadow-lifted:  0 4px 12px rgba(74, 47, 40, 0.08), 0 12px 32px rgba(74, 47, 40, 0.10);
+  --shadow-modal:   0 16px 48px rgba(74, 47, 40, 0.18), 0 4px 12px rgba(74, 47, 40, 0.08);
+  --shadow-inset-focus: 0 0 0 3px var(--ella-blush-100);
+
+  /* ---------------------------------------------------------
+     7. MOTION
+     --------------------------------------------------------- */
+  --duration-fast:   150ms; /* @kind other */
+  --duration-base:   200ms; /* @kind other */
+  --duration-slow:   400ms; /* @kind other */
+  --duration-enter:  600ms; /* @kind other */
+
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --ease-in:    cubic-bezier(0.7, 0, 0.84, 0); /* @kind other */
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1); /* @kind other */
+
+  /* ---------------------------------------------------------
+     8. LAYOUT
+     --------------------------------------------------------- */
+  --content-max:    1240px;   /* desktop marketing content width */
+  --gutter:         80px;     /* desktop outer gutter */
+  --header-height:  80px;
+}
+
+/* =========================================================
+   SEMANTIC TYPE STYLES
+   ========================================================= */
+
+html {
+  font-size: var(--text-base);
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  color: var(--fg-primary);
+  background: var(--bg-canvas);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.ella-h1,
+h1 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-regular);
+  font-size: clamp(var(--text-4xl), 6vw, var(--text-7xl));
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-primary);
+  text-wrap: pretty;
+}
+
+.ella-h2,
+h2 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-regular);
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-primary);
+  text-wrap: pretty;
+}
+
+.ella-h3,
+h3 {
+  font-family: var(--font-body);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-2xl);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-normal);
+  color: var(--fg-primary);
+}
+
+.ella-h4,
+h4 {
+  font-family: var(--font-body);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+  color: var(--fg-primary);
+}
+
+.ella-h5,
+h5 {
+  font-family: var(--font-body);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  color: var(--fg-primary);
+}
+
+.ella-eyebrow {
+  font-family: var(--font-body);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--ella-rose-deep);
+}
+
+.ella-body,
+p {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  color: var(--fg-secondary);
+  text-wrap: pretty;
+}
+
+.ella-body-lg {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+}
+
+.ella-body-sm {
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+}
+
+.ella-caption {
+  font-size: var(--text-xs);
+  line-height: var(--leading-normal);
+  color: var(--fg-muted);
+  letter-spacing: var(--tracking-wide);
+}
+
+.ella-quote {
+  font-family: var(--font-display);
+  font-weight: var(--weight-regular);
+  font-style: italic;
+  font-size: clamp(var(--text-2xl), 3vw, var(--text-4xl));
+  line-height: var(--leading-snug);
+  color: var(--fg-primary);
+  text-wrap: balance;
+}
+
+a {
+  color: var(--ella-rose-deep);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+a:hover {
+  color: var(--ella-terracotta);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+}
+
+::selection {
+  background: var(--ella-blush-100);
+  color: var(--ella-clay-900);
+}
