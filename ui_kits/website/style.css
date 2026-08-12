@@ -73,17 +73,28 @@ button { font: inherit; cursor: pointer; }
 @media (max-width: 600px) { .ella-header-book { display: none; } }
 .ella-nav {
   display: none;
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 0;
   gap: var(--space-6);
   margin-left: var(--space-8);
-  overflow: hidden;
+  flex-wrap: wrap;
+  row-gap: 4px;
 }
 @media (min-width: 900px) { .ella-nav { display: inline-flex; } }
+@media (max-width: 1180px) {
+  .ella-nav { gap: var(--space-4); margin-left: var(--space-5); }
+  .ella-navlink { font-size: 14px; }
+}
+@media (max-width: 1020px) {
+  .ella-nav { gap: 12px; margin-left: var(--space-4); }
+  .ella-navlink { font-size: 13.5px; }
+}
 .ella-navlink {
   color: var(--ella-clay-700);
   text-decoration: none;
   font-weight: 500;
   font-size: 15px;
+  white-space: nowrap;
   padding: 6px 2px;
   position: relative;
   white-space: nowrap;

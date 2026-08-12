@@ -16,7 +16,7 @@ const ELLA_TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "bodyFont": "Nunito",
   "heroVariant": "default",
   "showOrnaments": true,
-  "lang": "es"
+  "lang": "en"
 }/*EDITMODE-END*/;
 
 function App() {
