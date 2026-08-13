@@ -1,0 +1,134 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --color-cream: #f5f0e8;
+  --color-cream-dim: #d9d2c6;
+  --color-blush: #e8c4b8;
+  --color-gold: #c4a46c;
+  --color-forest: #1a2f23;
+  --color-leaf: #4a7c59;
+  --color-terracotta: #c17f59;
+  --color-amber: #e8b84c;
+  --color-ember: #c4644c;
+  --color-navy: #0f1a2e;
+  --color-silver: #b8c4d4;
+  --color-lavender: #c4b8d4;
+  --color-sand: #d4c4a8;
+  --color-clay: #a88c6c;
+  --color-sage: #7c8c6c;
+}
+
+/* Type scale stays anchored high — the audience is 45+ and the previous
+   system deliberately based its scale on 18px, not 16px. */
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+  background: #16211a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-cream);
+  background: transparent;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* ---------------------------------------------------------------------------
+   No-WebGL fallback. The `low` tier never mounts a Canvas, so this gradient
+   layer is the entire background — it has to carry the section palette shift
+   on its own. It's also what you see before hydration and with JS disabled.
+--------------------------------------------------------------------------- */
+.ella-fallback {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  background:
+    radial-gradient(120% 90% at 20% 0%, rgba(232, 196, 184, 0.16), transparent 60%),
+    linear-gradient(170deg, #1a2f23 0%, #2a2419 100%);
+  transition: background 900ms ease-out;
+}
+
+[data-section='nutricion'] .ella-fallback {
+  background:
+    radial-gradient(120% 90% at 20% 0%, rgba(74, 124, 89, 0.22), transparent 60%),
+    linear-gradient(170deg, #1a3a2a 0%, #2d3320 100%);
+}
+[data-section='ejercicio'] .ella-fallback {
+  background:
+    radial-gradient(120% 90% at 70% 100%, rgba(232, 184, 76, 0.2), transparent 60%),
+    linear-gradient(170deg, #2a1f1a 0%, #3d2418 100%);
+}
+[data-section='salud-mental'] .ella-fallback {
+  background:
+    radial-gradient(100% 80% at 50% 20%, rgba(196, 184, 212, 0.18), transparent 65%),
+    linear-gradient(170deg, #0f1a2e 0%, #16213a 100%);
+}
+[data-section='suplementos'] .ella-fallback {
+  background:
+    radial-gradient(120% 90% at 30% 90%, rgba(124, 140, 108, 0.18), transparent 60%),
+    linear-gradient(170deg, #3a2f23 0%, #2a2119 100%);
+}
+[data-section='recursos'] .ella-fallback {
+  background:
+    radial-gradient(120% 90% at 80% 10%, rgba(196, 164, 108, 0.16), transparent 60%),
+    linear-gradient(170deg, #1c1c22 0%, #242028 100%);
+}
+[data-section='sobre'] .ella-fallback {
+  background:
+    radial-gradient(120% 90% at 20% 0%, rgba(232, 196, 184, 0.18), transparent 60%),
+    linear-gradient(170deg, #1a2f23 0%, #2a2419 100%);
+}
+
+/* Text never fights the 3D layer. The form is positioned clear of the copy per
+   section, and this shadow is the safety net for the frames in between —
+   cheaper and less heavy-handed than a scrim over the whole column. */
+main h1,
+main h2,
+main h3,
+main p,
+main li,
+main blockquote,
+main figcaption {
+  text-shadow: 0 1px 16px rgba(8, 12, 10, 0.6);
+}
+
+/* Photography is warm-graded and slightly held back so a bright frame never
+   punches a hole in a dark section. */
+main img {
+  filter: brightness(0.88) contrast(1.04) saturate(0.94);
+}
+
+/* Reveal-on-scroll. GSAP animates these in; with JS off they're just visible,
+   which is why the hidden state is scoped to .js (set by main.jsx). */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+::selection {
+  background: rgba(196, 164, 108, 0.35);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
