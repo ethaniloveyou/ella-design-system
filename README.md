@@ -1,5 +1,8 @@
 # Ella Design System
 
+**[→ Open the live website](https://ethaniloveyou.github.io/ella-design-system/)** — hosted on GitHub Pages
+**[→ View the repo on GitHub](https://github.com/ethaniloveyou/ella-design-system)**
+
 ## Components
 
 - **CommunityBanner** — invite banner for the community waitlist/CTA.
